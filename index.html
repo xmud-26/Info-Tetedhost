@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>King Teted</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;800&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
+
+body{
+background:#000;
+color:white;
+overflow-x:hidden;
+position:relative;
+}
+
+/* PARTICLES */
+#particles-js{
+position:fixed;
+width:100%;
+height:100%;
+z-index:-5;
+}
+
+/* ===== MULTI BLUR GALAXY ===== */
+.blur1,.blur2,.blur3{
+position:fixed;
+border-radius:50%;
+filter:blur(200px);
+z-index:-4;
+animation:float 18s infinite alternate ease-in-out;
+}
+
+.blur1{
+width:900px;height:900px;
+background:radial-gradient(circle,#00ffff40,transparent 70%);
+top:40%;left:50%;
+transform:translate(-50%,-50%);
+}
+
+.blur2{
+width:700px;height:700px;
+background:radial-gradient(circle,#0066ff40,transparent 70%);
+top:20%;left:20%;
+animation-duration:22s;
+}
+
+.blur3{
+width:600px;height:600px;
+background:radial-gradient(circle,#00ccff30,transparent 70%);
+top:70%;left:70%;
+animation-duration:25s;
+}
+
+@keyframes float{
+0%{transform:translate(-50%,-50%) scale(1);}
+100%{transform:translate(-40%,-60%) scale(1.3);}
+}
+
+/* ===== CONTAINER ===== */
+.container{
+max-width:520px;
+margin:auto;
+padding:80px 20px;
+text-align:center;
+position:relative;
+z-index:2;
+}
+
+/* ===== PROFILE ===== */
+.profile img{
+width:120px;
+height:120px;
+border-radius:50%;
+border:2px solid #00ffff;
+box-shadow:0 0 35px #00ffff;
+margin-bottom:20px;
+}
+
+.profile h1{
+font-family:'Orbitron',sans-serif;
+font-size:28px;
+letter-spacing:3px;
+text-shadow:0 0 15px #00ffff;
+}
+
+.profile p{
+color:#aaa;
+margin-bottom:45px;
+}
+
+/* ===== LINK CARD ===== */
+.link{
+position:relative;
+display:flex;
+justify-content:center;
+align-items:center;
+padding:18px;
+margin-bottom:20px;
+border-radius:20px;
+text-decoration:none;
+color:white;
+font-weight:600;
+background:rgba(20,20,20,0.65);
+backdrop-filter:blur(30px);
+-webkit-backdrop-filter:blur(30px);
+transition:0.4s;
+overflow:hidden;
+}
+
+/* CLEAN BORDER */
+.link::before{
+content:"";
+position:absolute;
+inset:0;
+border-radius:20px;
+padding:1px;
+background:linear-gradient(120deg,#00ffff,#0055ff,#00ffff);
+background-size:200% 200%;
+animation:borderMove 5s linear infinite;
+-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);
+-webkit-mask-composite:xor;
+mask-composite:exclude;
+}
+
+@keyframes borderMove{
+0%{background-position:0% 50%;}
+100%{background-position:200% 50%;}
+}
+
+.link:hover{
+transform:scale(1.04);
+box-shadow:0 0 25px #00ffff;
+}
+
+/* ===== BRANDING ===== */
+.branding{
+margin-top:50px;
+font-size:13px;
+color:#888;
+opacity:0.7;
+letter-spacing:1px;
+}
+
+.branding span{
+color:#00ffff;
+font-weight:600;
+text-shadow:0 0 10px #00ffff;
+}
+</style>
+</head>
+
+<body>
+
+<div id="particles-js"></div>
+<div class="blur1"></div>
+<div class="blur2"></div>
+<div class="blur3"></div>
+
+<div class="container">
+
+<div class="profile">
+<img src="https://files.catbox.moe/e560ld.jpg">
+<h1>KINGTETED</h1>
+<p>Secure Digital Marketplace</p>
+</div>
+
+<div id="links-container"></div>
+
+<div class="branding">
+Powered by <span>TETEDHOST</span> © 2026
+</div>
+
+</div>
+
+<script>
+const links = [
+  { text: "WHATSAPP REAL KINGTETED", url: "https://wa.me/6285860378462" },
+  { text: "TELEGRAM KINGTETED", url: "https://t.me/tetedhost" },
+  { text: "LADANG JASTEB 1", url: "https://chat.whatsapp.com/L6fjKuu5JtUKwghkdYn2L5?mode=gi_t" },
+  { text: "LADANG JASTEB TELE", url: "https://t.me/+7qMGAg_czy44OGM1" },
+  { text: "ALL TESTI KINGTETED", url: "https://whatsapp.com/channel/0029VbC434x1Hspp5w3CVT46" }
+];
+
+const container = document.getElementById("links-container");
+
+links.forEach(link => {
+  const a = document.createElement("a");
+  a.href = link.url;
+  a.target = "_blank";
+  a.className = "link";
+  a.innerText = link.text;
+  container.appendChild(a);
+});
+
+particlesJS("particles-js",{
+particles:{
+number:{value:70},
+color:{value:"#ffffff"},
+shape:{type:"circle"},
+opacity:{value:0.6},
+size:{value:12,random:true},
+line_linked:{enable:true,distance:150,color:"#ffffff",opacity:0.4,width:1},
+move:{enable:true,speed:0.6}
+},
+interactivity:{
+events:{onhover:{enable:true,mode:"grab"},onclick:{enable:true,mode:"push"}},
+modes:{grab:{distance:200,line_linked:{opacity:0.6}},push:{particles_nb:4}}
+},
+retina_detect:true
+});
+</script>
+
+</body>
+</html>
